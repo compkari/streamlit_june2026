@@ -46,7 +46,6 @@ st.line_chart(stock_data)
 st.subheader("Stock Returns")
 st.line_chart(returns_data)
 
-
 sharpe_ratio = calculate_sharpe_ratio(returns_data)
 sortino_ratio = calculate_sortino_ratio(returns_data)
 
@@ -54,5 +53,14 @@ st.subheader("Performance Metrics")
 st.write(f"Sharpe Ratio: {sharpe_ratio:.2f}")
 st.write(f"Sortino Ratio: {sortino_ratio:.2f}")
 
+optimal_weights = portfolio_optimization(returns_data)
+
+st.subheader("Portfolio Optimization")
+st.write("Optimal Portfolio Weights:")
+for ticker, weight in zip(tickers, optimal_weights):
+    st.write(f"{ticker}: {weight:.2%}")
+
+csv_data = stock_data.to_csv()
+st.download_button("Download Stock Data CSV", csv_data, "stock_data.csv")
 
 

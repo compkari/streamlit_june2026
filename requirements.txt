@@ -1,0 +1,2 @@
+# this file runs for all files in repo
+yfinance

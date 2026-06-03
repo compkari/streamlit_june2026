@@ -1,3 +1,4 @@
+# uses the mistral AI (based on secret key from yesterday) for interactions
 import streamlit as st
 import random
 import time
@@ -49,8 +50,12 @@ def ai_ask(prompt, data=None, temperature=0.5, max_tokens=250, model="mistral-sm
         return f"Error: {str(e)}"
 
 # Streamed response emulator
+# response ai_ask, taylor to fine tune the response 
+# can change the context for effect, i.e. to be a witch doctor, gypsy fortune teller (good for inside of a game?)
+# --> Ex. Please pretend you are a witch doctor. ...
 def response_generator():
-    response = ai_ask("Pretend you are a very friendly and helpful person.  Please provide a response given the provided context.  Please provide the response only with no before or after commentary.",
+    # response = ai_ask("Pretend you are a very friendly and helpful person.  Please provide a response given the provided context.  Please provide the response only with no before or after commentary.",
+    response = ai_ask("Pretend you are a surfer dude and reply in that persona.  Please provide a response given the provided context.  Please provide the response only with no before or after commentary.",
                       data=st.session_state.messages,
                       api_key=st.secrets["apikey"])
     for word in response.split():
@@ -69,7 +74,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("What's up dude?"):
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)

@@ -1,10 +1,10 @@
-# 1st
+# 1st - create chat msg box
 # import streamlit as st
 
 # with st.chat_message("user"):
 #    st.write("Hello 👋")
 
-# 2nd
+# 2nd - print msg
 # import streamlit as st
 # import numpy as np
 
@@ -12,9 +12,25 @@
 #    st.write("Hello human")
 #    st.bar_chart(np.random.randn(30, 3))
 
-# 3rd
+# 3rd - input and capture msg
+# import streamlit as st
+
+# prompt = st.chat_input("Say something")
+# if prompt:
+#     st.write(f"User has sent the following prompt: {prompt}")
+
+#4 - 
 import streamlit as st
 
-prompt = st.chat_input("Say something")
-if prompt:
-    st.write(f"User has sent the following prompt: {prompt}")
+st.title("Echo Bot")
+
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+

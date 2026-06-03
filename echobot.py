@@ -1,10 +1,10 @@
-# 1st - create chat msg box
+# 1st iteration - create chat msg box
 # import streamlit as st
 
 # with st.chat_message("user"):
 #    st.write("Hello 👋")
 
-# 2nd - print msg
+# 2nd iteration - print msg
 # import streamlit as st
 # import numpy as np
 
@@ -12,14 +12,14 @@
 #    st.write("Hello human")
 #    st.bar_chart(np.random.randn(30, 3))
 
-# 3rd - input and capture msg
+# 3rd iteration - input and capture msg
 # import streamlit as st
 
 # prompt = st.chat_input("Say something")
 # if prompt:
 #     st.write(f"User has sent the following prompt: {prompt}")
 
-#4 - 
+#4 iteration - integrate both user prompt and response echo  
 import streamlit as st
 
 st.title("Echo Bot")
